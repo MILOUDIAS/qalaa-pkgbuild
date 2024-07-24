@@ -1,0 +1,24 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=qalaalinux-neofetch
+_pkgname=qalaalinux-neofetch
+_destname1="/etc/skel/.config/neofetch/"
+pkgver=24.07
+pkgrel=01
+pkgdesc="neofetch config for qalaalinux"
+arch=('any')
+url="https://github.com/MILOUDIAS/qalaalinux-neofetch"
+license=('GPL3')
+makedepends=('git')
+depends=('bash' 'python')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/MILOUDIAS/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+	install -m644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644 ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
