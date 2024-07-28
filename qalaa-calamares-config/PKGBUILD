@@ -1,20 +1,22 @@
-# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+# Maintainer: Miloudi Adel Hani
 pkgname=qalaa-calamares-config
-_destname1="/etc"
+_pkgname=qalaa-calamares-config
+_destname="/etc"
 pkgver=24.07
-pkgrel=01
-pkgdesc="calamares for QALAA"
+pkgrel=02
+pkgdesc="calamares config for qalaalinux"
 arch=('any')
-url="https://github.com/MILOUDIAS"
+url="https://github.com/MILOUDIAS/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
 depends=()
-conflicts=('alci-calamares-config' 'alci-calamares-config-pure' 'alci-calamares-config-btrfs' 'alci-calamares-config-dev' 'alci-calamares-config-zen' 'alci-calamares-config-lts')
+conflicts=('calamares-config' 'arconet-calamares-config')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=(${pkgname}::"git+${url}/${pkgname}")
+source=(${_pkgname}::"git+$url")
 sha256sums=('SKIP')
+install='readme.install'
 package() {
-	install -dm755 ${pkgdir}${_destname1}
-	cp -r ${srcdir}/${pkgname}${_destname1}/* ${pkgdir}${_destname1}
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/etc/"* "${pkgdir}${_destname}"
 }
