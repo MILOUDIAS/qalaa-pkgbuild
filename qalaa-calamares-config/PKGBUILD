@@ -2,8 +2,8 @@
 pkgname=qalaa-calamares-config
 _pkgname=qalaa-calamares-config
 _destname="/etc"
-pkgver=24.07
-pkgrel=09
+pkgver=24.08
+pkgrel=03
 pkgdesc="calamares config for qalaalinux"
 arch=('any')
 url="https://github.com/MILOUDIAS/${_pkgname}"
